@@ -151,50 +151,50 @@ data "aws_availability_zones" "terra_az" {}
 resource "aws_s3_bucket" "s3_bucket_full_func"  {
 
 	tags {
-		Name 							= "Bucket-with-functionality"
+		Name 				= "Bucket-with-functionality"
 	}
 
-	bucket 							= "bucketfull0002"
-	acl 								= "${var.bucket_acl}"
-	region 							= "${var.bucket_region}"
-	policy 							= "${var.bucket_policy}"
-	force_destroy 			= "${var.force_destroy}"
+	bucket 					= "bucketfull0002"
+	acl 					= "${var.bucket_acl}"
+	region 					= "${var.bucket_region}"
+	policy 					= "${var.bucket_policy}"
+	force_destroy 				= "${var.force_destroy}"
 
 	versioning {
-		enabled 					= "${var.versioning_enabled}"
+		enabled 			= "${var.versioning_enabled}"
 	}
 
 	lifecycle_rule {
 
-		id 								= "bucketfull0002"
-		enabled 					= "${var.lifecycle_rule_enabled}"
+		id 				= "bucketfull0002"
+		enabled 			= "${var.lifecycle_rule_enabled}"
 
-		prefix 						= "${var.prefix}"
+		prefix 				= "${var.prefix}"
 		tags {
-			Name 						= "lifecycle management rules"
+			Name 			= "lifecycle management rules"
 		}
 
 		noncurrent_version_expiration {
-			days 						= "${var.noncurrent_version_expiration_days}"
+			days 			= "${var.noncurrent_version_expiration_days}"
 		}
 
 		noncurrent_version_transition {
-			days 						= "${var.noncurrent_version_transition_days}"
-			storage_class 	= "GLACIER"
+			days 			= "${var.noncurrent_version_transition_days}"
+			storage_class 		= "GLACIER"
 			}
 
 		transition  {
-			days 						= "${var.standard_transition_days}"
-			storage_class 	= "STANDARD_IA"
+			days 			= "${var.standard_transition_days}"
+			storage_class 		= "STANDARD_IA"
 		}
 
 		transition {
-			days 						= "${var.glacier_transition_days}"
-			storage_class 	= "GLACIER"
+			days 			= "${var.glacier_transition_days}"
+			storage_class 		= "GLACIER"
 		}
 
 		expiration {
-			days 						= "${var.expiration_days}"
+			days 			= "${var.expiration_days}"
 		}
 
 	}
@@ -204,7 +204,7 @@ resource "aws_s3_bucket" "s3_bucket_full_func"  {
 
 				apply_server_side_encryption_by_default {
 
-						sse_algorithm 				= "${var.sse_algorithm}"
+						sse_algorithm 			= "${var.sse_algorithm}"
 						kms_master_key_id  		= "${var.key_id}"
 				}
 			}
