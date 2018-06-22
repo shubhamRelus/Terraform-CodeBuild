@@ -1,7 +1,7 @@
 # ---------resources and modules for VPC - start - ----------------
 
 module "vpc" {
-	source 								= "terraform-aws-modules/vpc/aws"
+	source 								= "github.com/shubhamRelus/Terraform-CodeBuild"
 	version 							= "1.9.1"
 
 	name 									= "${var.name}"
